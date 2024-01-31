@@ -40,7 +40,10 @@ fn main() {
             0 => cap_out,
             _ => { sizing.front().unwrap().clone() },
         };
-        let cin = cap * g.1 * branch[branch.len() - 1 - g.0] / optimal_f;
+        let mut cin = cap * g.1 * branch[branch.len() - 1 - g.0] / optimal_f;
+        if cin < 3.0 {
+            cin = 3.0;
+        }
         sizing.push_front(cin);
     }
 
