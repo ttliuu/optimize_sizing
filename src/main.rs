@@ -46,4 +46,12 @@ fn main() {
 
     println!("Sizing: {:?}", sizing);
 
+    println!("Enter parasitics, separate by space");
+    let mut para = String::new();
+    io::stdin().read_line(&mut para).unwrap();
+    let para: Vec<f64> = para.trim().split(" ").map(|n| n.parse().expect("NaN")).collect();
+    let optimal_d = logic_efforts.len() as f64 * optimal_f + para.iter().sum::<f64>();
+    println!("Optimal delay is {} tau", optimal_d);
+
+
 }
